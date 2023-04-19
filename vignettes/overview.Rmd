@@ -1,0 +1,120 @@
+---
+title: "Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE, message = FALSE
+)
+```
+
+
+```{r message=FALSE, echo = FALSE, include=FALSE}
+library(dplyr)
+library(stormwindmodel)
+library(hurricaneexposuredata)
+library(sf)
+library(tigris)
+library(lubridate)
+library(wnvstormdata)
+library(ggplot2)
+```
+
+
+## Summary
+
+  The data provided in `wnvstormdata` takes weekly West Nile Virus transmission data for Parishes in Louisiana and determines if a storm occurred in that Parish for the observed week. The storm exposure is determined by if the Parish observed sustained wind speeds of at least 34 knots during the observed week. This data set provides researchers interested in the association between vector-borne disease prevalence and hurricanes with clean and complete data on cases numbers and when hurricane exposure took place.
+```{r datasample}
+data("wnv_2002_2021_stormexposure")
+head(wnv_2002_2021_stormexposure)
+```
+
+## Background
+
+  West Nile Virus (WNV) is a vector-borne disease of significant concern in public health. Originating in birds, mosquitoes can become a carrier of the virus when they feed off an infected bird and spread it to their next victims. People can become infected when bitten by a mosquito carrying the virus. Individuals who contract it can experience a wide range of symptoms. While most people have an asymptomatic reaction and exhibit no symptoms, some may experience fever, body aches, etc. In severe cases, patients may die from (look up). 
+  Several factors influence WNV transmission. These include human behavior, mosquito behavior, and climate factors. Hurricanes have the potential to impact all of these factors. For example, heavy winds may knock out mosquito populations during a storm event. However, flooding can create large areas of standing water, which is the ideal breeding climate for mosquito pools. This can lead to West Nile Virus quickly spreading within mosquito pools, increasing the risk of exposure for humans. In addition, if this flooding takes place in residential areas, humans and mosquitoes may be brought into closer and more frequent proximity of one another. This could also increase human risk of exposure to WNV. In order to study any relationship between WNV prevalence and hurricanes, the data for each respective observation must be somehow linked together.
+  Environmental epidemiology, such as hurricane studies, requires a lot of data cleaning. This is the most time-consuming step in analytical research. `wnvstormdata` contains data where this step has already been completed. This will save researchers a lot of time by providing an open-source package with the data ready to go.  
+
+## Methods
+  
+  This data package sources data from the Louisiana Department of Public Health (LDPH) and National Oceanic and Atmospheric Administration (NOAA). The disease data needed from LDPH is found in pdfs, which are not easy to convert to a usable dataset. There are weekly and annual summary pdfs from 2002-2021. Copying information from these files manually is time consuming and introduces errors. This data set has already gone through all of the files and extracted needed data. This work speeds up the process for researchers and removes the risk of individual errors. 
+  In addition, the disease and storm data need to be linked for proper analysis. The disease data and hurricane data are originally collected in different time intervals. The timestamps have been converted so that they align. This was used to identify if a hurricane occurred during each week of observation. The other aspect of determining storm exposure is location. For this step, the `stormwindmodel` R package was used to create storm tracks for storms recorded in the NOAA dataset. The `get_grid_winds` function uses county coordinates to determine which Parish a storm track observation was made in. The grid_id provided from the function was then filtered by each WNV observation's FIPS code. If a sustained wind observation of at least 34 knots was made in the Parish during the observation interval, then that observation is denoted 1 for exposure.
+
+## Sample Analysis
+With links between WNV prevalence and hurricane storms per year, overall case counts can be compared with storm paths, as seen in Figure 1.
+```{r trackplot, message=FALSE, warning=FALSE}
+
+
+#Cases
+katrina <- wnv_2002_2021_stormexposure %>% filter(Storm == "Katrina-2005")
+
+katrinayear <- wnv_2002_2021_stormexposure %>% 
+  mutate(Year = year(StartDate)) %>% 
+  filter(Year == 2005) %>% 
+  group_by(Parish) %>% 
+  summarize(Fips = unique(Fips),
+            Cases = sum(Cases))
+  
+#Storm track
+storm <- hurr_tracks %>% 
+    mutate(ymd_date = lubridate::ymd_hm(date)) %>% 
+  tidyr::separate(storm_id, c("storm", "year")) %>% 
+  filter(storm == "Katrina")
+
+winds <- get_grid_winds(storm) %>% 
+  filter(gridid %in% katrina$Fips) 
+
+storm2 <- storm %>% 
+  filter(28 <latitude & latitude<35)
+
+#Louisiana map
+louisiana <- counties(state="LA", class = "sf", cb = T) %>% 
+  mutate(fips = paste0(STATEFP,COUNTYFP)) %>% 
+  left_join(katrinayear, by = c("fips" = "Fips"))
+
+#Plot
+ggplot()+
+          geom_sf(data = louisiana, aes(fill = Cases))+
+          geom_path(data = storm2, aes(x = longitude, y = latitude), color = "Red")+
+          scale_fill_gradient(low = "blue", high = "red")
+
+```
+
+General case analysis is also accessible via `wnvstormdata` for WNV cases in Louisiana. Data retrieved from pdfs from the Lousiana Department of Public Health are available in this package in dataframe format. This allows for easy analysis of trends over the years:
+```{r yearly}
+plotdata <- wnv_2002_2021_stormexposure %>% 
+  mutate(Year = year(StartDate)) %>% 
+  group_by(Year, Parish) %>% 
+  summarize(Cases = sum(Cases), 
+            Fips = unique(Fips))
+
+louisiana_annual <- counties(state = "LA", class = "sf", cb = T) %>% 
+  left_join(plotdata, by = c("GEOID" = "Fips"))
+
+ggplot()+
+  geom_sf(data =louisiana_annual, aes(fill = Cases))+
+  scale_fill_gradient(low = "blue", high = "red")+
+  facet_wrap(~Year)
+
+```
+
+## Sources
+Brooke Anderson, Andrea Schumacher, Seth Guikema, Steven Quiring, Joshua
+  Ferreri, Elizabeth Tennant and Jordan Robinson (2021). stormwindmodel:
+  Model Tropical Cyclone Wind Speeds. R package version 0.1.5.9.
+  https://github.com/geanders/stormwindmodel
+
+NHC Data Archive. (n.d.). Retrieved January 26, 2023, from https://www.nhc.noaa.gov/data/ 
+
+West Nile virus: LA Dept. of health. West Nile Virus | La Dept. of Health. (n.d.). Retrieved January 26,
+  2023, from https://ldh.la.gov/page/539 
+
+
+

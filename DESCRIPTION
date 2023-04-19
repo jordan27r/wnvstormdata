@@ -1,12 +1,33 @@
 Package: wnvstormdata
-Title: What the Package Does (One Line, Title Case)
+Title: Dataset of Louisiana West Nile Infection Data Linked with Hurricane Exposure
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    c(person("Jordan", "Robinson", , "jordan227r@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person("Brooke", "Anderson", email = "brooke.anderson@colostate.edu", role = c("aut")))
+Description: The dataset provided by 'wnvstormdata' consists of weekly West Nile Virus 
+        case data per parish in Lousiana from 2002-2021. These weekly observations have
+        been linked with NOAA storm data by time and geographic location to determine
+        storm exposure. If a storm with winds of at least 34 knots occursed during the 
+        observation week within the parish, it is considered an exposure. This data can
+        be used to research associations between hurricanes and vector borne diseases.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    dplyr (>= 1.0.7),
+    ggplot2 (>= 3.3.6),
+    hurricaneexposuredata (>= 0.1.0),
+    knitr (>= 1.31),
+    lubridate (>= 1.8.0),
+    rmarkdown (>= 2.14),
+    sf (>= 1.0-6),
+    stormwindmodel (>= 0.1.5.9),
+    stringr (>= 1.4.0),
+    tidyr (>= 1.1.4),
+    tigris (>= 1.6)
+VignetteBuilder: knitr
