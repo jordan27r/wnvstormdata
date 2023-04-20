@@ -369,12 +369,13 @@ took place paired by location and time interval.</p>
 dataframe with seven columns: * parish: A character object of the parish
 name * fips: A character object containing the five digit FIPs code for
 the parish * start_date: A date object indicating the beginning of the
-CDC observance period * end_date: A date object indicating the end of
-the CDC observance period * cases: A numeric object of case numbers
-occuring within the stated CDC observance week * exposure: A numeric
-object indicating if the parish experienced a storm with winds of at
-least 34 knots during the observance week * storm: A character object
-that states, if a storm exposure occured, which storm it was</p>
+CDC Epidemiological Week * end_date: A date object indicating the end of
+the CDC Epidemiological Week * cases: A numeric object of case numbers
+occuring within the stated CDC Epidemiological week * exposure: A
+numeric object indicating if the parish experienced a storm with winds
+of at least 34 knots during the epidemiological week * storm: A
+character object that states, if a storm exposure occured, which storm
+it was</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;wnv_2002_2021_stormexposure&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wnv_2002_2021_stormexposure)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 7</span></span>
@@ -424,12 +425,12 @@ computer mutation. While considered a good format for reading and
 publishing, fixed-width text is often innate for further analysis. The
 primary challenge in integrating two separate data sets is differing
 time and space scales. The time objects in the WNV files, for example,
-is labelled by CDC observance weeks <span class="citation">(<span>“West
-Nile Virus: LA Dept. Of Health”</span> 2022)</span>. These need to be
-converted to a year/month/day format to align with the tropical cyclone
-wind observation times. Having the format conversion and time-format
-differentiation fixed will save researchers a lot of time by providing
-an open-source package with the data ready to go.</p>
+is labelled by CDC epidemiological weeks <span class="citation">(<span>“West Nile Virus: LA Dept. Of Health”</span>
+2022)</span>. These need to be converted to a year/month/day format to
+align with the tropical cyclone wind observation times. Having the
+format conversion and time-format differentiation fixed will save
+researchers a lot of time by providing an open-source package with the
+data ready to go.</p>
 </div>
 <div id="methods" class="section level2">
 <h2>Methods</h2>

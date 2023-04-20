@@ -37,10 +37,10 @@ library(ggplot2)
   The following code gives a sample of the linked data set `wnv_2002_2021_stormexposure`. The data is comprised into a dataframe with seven columns:
   * parish: A character object of the parish name
   * fips: A character object containing the five digit FIPs code for the parish
-  * start_date: A date object indicating the beginning of the CDC observance period
-  * end_date: A date object indicating the end of the CDC observance period
-  * cases: A numeric object of case numbers occuring within the stated CDC observance week
-  * exposure: A numeric object indicating if the parish experienced a storm with winds of at least 34 knots during the observance week
+  * start_date: A date object indicating the beginning of the CDC Epidemiological Week
+  * end_date: A date object indicating the end of the CDC Epidemiological Week
+  * cases: A numeric object of case numbers occuring within the stated CDC Epidemiological week
+  * exposure: A numeric object indicating if the parish experienced a storm with winds of at least 34 knots during the epidemiological week
   * storm: A character object that states, if a storm exposure occured, which storm it was
   
 ```{r datasample}
@@ -55,7 +55,7 @@ head(wnv_2002_2021_stormexposure)
   
   Several factors influence WNV transmission. These include human behavior, mosquito behavior, and climate factors. Hurricanes have the potential to impact all of these factors. For example, heavy winds may kill mosquito populations during a storm event. However, flooding can create large areas of standing water, which is the ideal breeding climate for mosquito pools. This can lead to West Nile Virus quickly spreading within mosquito pools, increasing the risk of exposure for humans. In addition, if this flooding takes place in residential areas, humans and mosquitoes may be brought into closer and more frequent proximity of one another. This could also increase human risk of exposure to WNV. For example, in the aftermath of Hurricane Katrina, many families were left stranded on their roofs for multiple days awaiting rescue. While waiting, they had to endure several mosquito bites [@caillouet2020temporal]. In order to study any relationship between WNV prevalence and hurricanes, the data for each respective observation must be  linked together.
   
-  Environmental epidemiology, such as hurricane studies, can require a lot of format-alignment and cleaning. This is the main issue, and most time-consuming step, in analytical research. `wnvstormdata` contains data where this step has already been completed. Specifically, data has been converted from PDF fixed-width spacing to RDA format for computer mutation. While considered a good format for reading and publishing, fixed-width text is often innate for further analysis. The primary challenge in integrating two separate data sets is differing time and space scales. The time objects in the WNV files, for example, is labelled by CDC observance weeks [@wnv2022]. These need to be converted to a year/month/day format to align with the tropical cyclone wind observation times. Having the format conversion and time-format differentiation fixed will save researchers a lot of time by providing an open-source package with the data ready to go. 
+  Environmental epidemiology, such as hurricane studies, can require a lot of format-alignment and cleaning. This is the main issue, and most time-consuming step, in analytical research. `wnvstormdata` contains data where this step has already been completed. Specifically, data has been converted from PDF fixed-width spacing to RDA format for computer mutation. While considered a good format for reading and publishing, fixed-width text is often innate for further analysis. The primary challenge in integrating two separate data sets is differing time and space scales. The time objects in the WNV files, for example, is labelled by CDC epidemiological weeks [@wnv2022]. These need to be converted to a year/month/day format to align with the tropical cyclone wind observation times. Having the format conversion and time-format differentiation fixed will save researchers a lot of time by providing an open-source package with the data ready to go. 
 
 ## Methods
   
