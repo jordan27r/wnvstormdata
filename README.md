@@ -24,7 +24,11 @@ You can install the development version of wnvstormdata from
 devtools::install_github("jordan27r/wnvstormdata", build_vignettes = TRUE)
 ```
 
-## Example
+## More Information
 
 To get more information on `wnvstormdata`, you can open the Overview
 vignette with:
+
+``` r
+vignette("overview", package="wnvstormdata")
+```
