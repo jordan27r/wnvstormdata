@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Overview</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Overview</h1>
+
+
+
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>The data provided in <code>wnvstormdata</code> integrates weekly data
+on tropical cyclone exposure and West Nile Virus incidence for parishes
+in Louisiana from 2002–2021 to determine if a storm occurred in each
+parish for the observed week. This data set provides researchers
+interested in the association between vector-borne disease prevalence
+and hurricanes with data on cases numbers and when hurricane exposure
+took place paired by location and time interval.</p>
+<p>The following code gives a sample of the linked data set
+<code>wnv_2002_2021_stormexposure</code>. The data is comprised into a
+dataframe with seven columns: * parish: A character object of the parish
+name * fips: A character object containing the five digit FIPs code for
+the parish * start_date: A date object indicating the beginning of the
+CDC observance period * end_date: A date object indicating the end of
+the CDC observance period * cases: A numeric object of case numbers
+occuring within the stated CDC observance week * exposure: A numeric
+object indicating if the parish experienced a storm with winds of at
+least 34 knots during the observance week * storm: A character object
+that states, if a storm exposure occured, which storm it was</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;wnv_2002_2021_stormexposure&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wnv_2002_2021_stormexposure)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 x 7</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Parish    Fips  StartDate  EndDate    Cases Exposure Storm</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Jefferson 22051 2004-06-06 2004-06-13     0        0 NA   </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Jefferson 22051 2004-06-13 2004-06-20     0        0 NA   </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Jefferson 22051 2004-06-20 2004-06-27     0        0 NA   </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Jefferson 22051 2004-06-27 2004-07-04     0        0 NA   </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Jefferson 22051 2004-07-04 2004-07-11     0        0 NA   </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Jefferson 22051 2004-07-11 2004-07-18     0        0 NA</span></span></code></pre></div>
+</div>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>West Nile Virus (WNV) is a vector-borne disease of significant
+concern in public health. Originating in avian life, this virus can be
+contracted by mosquitoes who become a carrier when they feed off an
+infected bird and spread it to their next victims. People can become
+infected when bitten by a mosquito carrying the virus. Individuals who
+contract it can experience a wide range of symptoms. While most people
+have an asymptomatic reaction and exhibit no symptoms, some may
+experience fever, body aches, etc. In severe cases, patients may die
+from encephalitis or meningitis <span class="citation">(<span>“Symptoms,
+Diagnosis, &amp;Amp; Treatment”</span> 2022)</span>.</p>
+<p>Several factors influence WNV transmission. These include human
+behavior, mosquito behavior, and climate factors. Hurricanes have the
+potential to impact all of these factors. For example, heavy winds may
+kill mosquito populations during a storm event. However, flooding can
+create large areas of standing water, which is the ideal breeding
+climate for mosquito pools. This can lead to West Nile Virus quickly
+spreading within mosquito pools, increasing the risk of exposure for
+humans. In addition, if this flooding takes place in residential areas,
+humans and mosquitoes may be brought into closer and more frequent
+proximity of one another. This could also increase human risk of
+exposure to WNV. For example, in the aftermath of Hurricane Katrina,
+many families were left stranded on their roofs for multiple days
+awaiting rescue. While waiting, they had to endure several mosquito
+bites <span class="citation">(Caillouët 2020)</span>. In order to study
+any relationship between WNV prevalence and hurricanes, the data for
+each respective observation must be linked together.</p>
+<p>Environmental epidemiology, such as hurricane studies, can require a
+lot of format-alignment and cleaning. This is the main issue, and most
+time-consuming step, in analytical research. <code>wnvstormdata</code>
+contains data where this step has already been completed. Specifically,
+data has been converted from PDF fixed-width spacing to RDA format for
+computer mutation. While considered a good format for reading and
+publishing, fixed-width text is often innate for further analysis. The
+primary challenge in integrating two separate data sets is differing
+time and space scales. The time objects in the WNV files, for example,
+is labelled by CDC observance weeks <span class="citation">(<span>“West
+Nile Virus: LA Dept. Of Health”</span> 2022)</span>. These need to be
+converted to a year/month/day format to align with the tropical cyclone
+wind observation times. Having the format conversion and time-format
+differentiation fixed will save researchers a lot of time by providing
+an open-source package with the data ready to go.</p>
+</div>
+<div id="methods" class="section level2">
+<h2>Methods</h2>
+<p>This data package sources data from the Louisiana Department of
+Public Health (LDPH) <span class="citation">(<span>“West Nile Virus: LA
+Dept. Of Health”</span> 2022)</span> and National Oceanic and
+Atmospheric Administration (NOAA) <span class="citation">(2023)</span>.
+The disease data needed from LDPH is found in PDFs, which are not a
+proper format for further analysis. There are weekly and annual summary
+PDFs from 2002–2021. Extracting information from these files manually is
+time consuming and can introduce errors. With this data set, we have
+already gone through all of the files and extracted needed data. This
+work speeds up the process for researchers and reduces the risk of
+clerical errors.</p>
+<p>In addition, the disease and storm data need to be integrated for
+proper analysis. The disease data and hurricane data are originally
+collected in different time intervals. The WNV incidence data is
+presented in week numbers out of the year, while the storm data is
+recorded in year/month/day format, with 15 minute increments for each
+wind observation in the generated wind fields. The CDC weeks have been
+converted to intervals notated in the year/month/day format so that both
+data sets align. This was used to identify if a hurricane occurred
+during each week of observation. The other aspect of determining storm
+exposure is location. For this step, the <code>stormwindmodel</code> R
+package was used to model wind fields for storm tracks recorded in the
+NOAA dataset. The <code>get_grid_winds</code> function uses parish
+coordinates to determine which parish a wind field observation was made
+in <span class="citation">(Anderson et al. 2021)</span>. The grid_id
+provided from the function was then filtered by each WNV observation’s
+FIPs code. We considered an observance week to be exposed if there were
+sustained winds of at least 34 knots during the week period and in the
+parish’s geographic coordinates. 34 knots is the threshold for which
+NOAA classifies a tropical cyclone as a tropical storm <span class="citation">(<span>“Tropical Cyclone Climatology”</span>
+2021)</span>. Wind speeds of at least 34 knots are considered gale
+force, meaning they are strong and persistent. These are described on
+the Beaufort Wind Scale as the wind strength at which twigs and small
+branches start falling off of trees<span class="citation">(US Department
+of Commerce 2016)</span>. For these exposed observations, the name of
+the storm the winds were from is also noted in the storm column.</p>
+</div>
+<div id="examples-of-working-with-data" class="section level2">
+<h2>Examples of Working with Data</h2>
+<p>With links between WNV prevalence and hurricane storms per year,
+overall case counts can be compared with storm paths. An example of this
+is displayed with Hurricane Katrina, seen in Figure 1.</p>
+<p>The first step in modeling confirmed case counts with a storm is
+creating our storm path. First, we use <code>hurr_tracks</code> from
+<code>hurricaneexposuredata</code> and filter out the wind observations
+for hurricane Katrina:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Storm track</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>storm <span class="ot">&lt;-</span> hurr_tracks <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ymd_date =</span> lubridate<span class="sc">::</span><span class="fu">ymd_hm</span>(date)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">separate</span>(storm_id, <span class="fu">c</span>(<span class="st">&quot;storm&quot;</span>, <span class="st">&quot;year&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(storm <span class="sc">==</span> <span class="st">&quot;Katrina&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># winds &lt;- get_grid_winds(storm) %&gt;% </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(gridid %in% katrina$Fips) %&gt;% </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   left_join(katrinayear, by = c(&quot;gridid&quot; = &quot;Fips&quot;)) </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add_storm_track(storm, plot_object = map_wind(winds, value = &quot;Cases&quot;, break_point = 1))</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>storm2 <span class="ot">&lt;-</span> storm <span class="sc">%&gt;%</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="dv">28</span> <span class="sc">&lt;</span>latitude <span class="sc">&amp;</span> latitude<span class="sc">&lt;</span><span class="dv">35</span>)</span></code></pre></div>
+<p>For our sample model, we are interested in cases in Louisiana
+accuring in different intervals after the storm. First, we create
+intervals for each of the periods of interest: the week of the storm,
+one month after the storm, then the rest of the year after Katrina hit.
+The <code>wnv_2002_2021_stormexposure</code> dataset is filtered for
+each of these intervals, initially made into different dataframes. Then,
+for each respective interval, the cases are grouped by parish and
+summarized into the total cases. These interval data frames are all
+joined together. In addition, the counties that were exposed to the gale
+force winds from Katrina are notated as exposed, which will help us
+highlight them in the plotting section.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Katrina Dates</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>katrina_week_interval <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="at">start =</span> <span class="fu">min</span>(storm2<span class="sc">$</span>ymd_date), <span class="at">end =</span> <span class="fu">max</span>(storm2<span class="sc">$</span>ymd_date))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>katrina_1month_interval <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="at">start =</span> <span class="fu">min</span>(storm2<span class="sc">$</span>ymd_date), <span class="at">end =</span> (<span class="fu">max</span>(storm2<span class="sc">$</span>ymd_date)<span class="sc">+</span><span class="fu">days</span>(<span class="dv">28</span>)))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>katrina_6month_interval <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="at">start =</span> <span class="fu">min</span>(storm2<span class="sc">$</span>ymd_date), <span class="at">end =</span> (<span class="fu">max</span>(storm2<span class="sc">$</span>ymd_date)<span class="sc">+</span><span class="fu">days</span>(<span class="dv">168</span>)))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Cases</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>katrina_initial <span class="ot">&lt;-</span> wnv_2002_2021_stormexposure <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">int_overlaps</span>(<span class="fu">interval</span>(StartDate, EndDate), katrina_week_interval)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Parish) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">interval =</span> <span class="st">&quot;That Week&quot;</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fips =</span> <span class="fu">unique</span>(Fips),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">Cases =</span> <span class="fu">sum</span>(Cases),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">exposure =</span> <span class="fu">if_else</span>(<span class="fu">sum</span>(Storm <span class="sc">==</span> <span class="st">&quot;Katrina-2005&quot;</span>)<span class="sc">&gt;</span><span class="dv">0</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>katrina_1month <span class="ot">&lt;-</span> wnv_2002_2021_stormexposure <span class="sc">%&gt;%</span> </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">int_overlaps</span>(<span class="fu">interval</span>(StartDate, EndDate), katrina_1month_interval)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Parish) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">interval =</span> <span class="st">&quot;1 month&quot;</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fips =</span> <span class="fu">unique</span>(Fips),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">Cases =</span> <span class="fu">sum</span>(Cases),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">exposure =</span> <span class="fu">if_else</span>(<span class="fu">sum</span>(Storm <span class="sc">==</span> <span class="st">&quot;Katrina-2005&quot;</span>)<span class="sc">&gt;</span><span class="dv">0</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>katrina_6month <span class="ot">&lt;-</span> wnv_2002_2021_stormexposure <span class="sc">%&gt;%</span> </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">int_overlaps</span>(<span class="fu">interval</span>(StartDate, EndDate), katrina_6month_interval)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Parish) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">interval =</span> <span class="st">&quot;6 months&quot;</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fips =</span> <span class="fu">unique</span>(Fips),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">Cases =</span> <span class="fu">sum</span>(Cases),</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">exposure =</span> <span class="fu">if_else</span>(<span class="fu">sum</span>(Storm <span class="sc">==</span> <span class="st">&quot;Katrina-2005&quot;</span>)<span class="sc">&gt;</span><span class="dv">0</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>katrinayear <span class="ot">&lt;-</span> wnv_2002_2021_stormexposure <span class="sc">%&gt;%</span> </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">year</span>(StartDate)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2005</span> <span class="sc">&amp;</span> EndDate <span class="sc">&gt;</span> <span class="fu">min</span>(storm2<span class="sc">$</span>ymd_date)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Parish) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">interval =</span> <span class="st">&quot;Rest of Year&quot;</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fips =</span> <span class="fu">unique</span>(Fips),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>            <span class="at">Cases =</span> <span class="fu">sum</span>(Cases),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>            <span class="at">exposure =</span> <span class="fu">if_else</span>(<span class="fu">sum</span>(Storm <span class="sc">==</span> <span class="st">&quot;Katrina-2005&quot;</span>)<span class="sc">&gt;</span><span class="dv">0</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(katrina_initial) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(katrina_1month) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(katrina_6month)</span></code></pre></div>
+<p>We can then take Louisiana parish coordinate data from
+<code>tigris</code> to get the coordinates necessary for plotting. This
+information is integrated with our case dataframe by FIPs code. Then, we
+can layer our state case counts with the storm track from above,
+faceting by the <code>interval</code> column from the case analysis
+dataframe to create a plot per each interval of interest, resulting in
+Figure 1:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Louisiana map</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>louisiana <span class="ot">&lt;-</span> <span class="fu">counties</span>(<span class="at">state=</span><span class="st">&quot;LA&quot;</span>, <span class="at">class =</span> <span class="st">&quot;sf&quot;</span>, <span class="at">cb =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fips =</span> <span class="fu">paste0</span>(STATEFP,COUNTYFP)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(katrinayear, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;fips&quot;</span> <span class="ot">=</span> <span class="st">&quot;Fips&quot;</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_sf</span>(<span class="at">data =</span> louisiana, <span class="fu">aes</span>(<span class="at">fill =</span> Cases, <span class="at">color =</span> exposure))<span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_path</span>(<span class="at">data =</span> storm2, <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude), <span class="at">color =</span> <span class="st">&quot;Red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">high =</span> <span class="st">&quot;green&quot;</span>)<span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>          <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">&quot;red&quot;</span>))<span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">theme_void</span>()<span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">facet_wrap</span>(<span class="sc">~</span>interval)<span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>          <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>General case analysis is also accessible via
+<code>wnvstormdata</code> for WNV cases in Louisiana. The PDF
+fixed-width layout the WNV incidence data is published in is easy to
+read, making it good for communication to the public. However, it is
+difficult for those interested in further analysis to use. Users can use
+the case data provided in the <code>wnv_2002_2021_stormexposure</code>
+for case-specific research without using the storm exposure aspects.
+This could also be used to measure exposure to other climate factors,
+such as temperature or precipitation.</p>
+<p>Data retrieved from the Louisiana Department of Public Health are
+available in this package in dataframe format. This allows for easy
+analysis of trends over the years:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> wnv_2002_2021_stormexposure <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">year</span>(StartDate)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, Parish) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Cases =</span> <span class="fu">sum</span>(Cases), </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fips =</span> <span class="fu">unique</span>(Fips))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">unique</span>(plotdata<span class="sc">$</span>Year))) </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>louisiana_annual <span class="ot">&lt;-</span> <span class="fu">counties</span>(<span class="at">state =</span> <span class="st">&quot;LA&quot;</span>, <span class="at">class =</span> <span class="st">&quot;sf&quot;</span>, <span class="at">cb =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> year) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(plotdata, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;GEOID&quot;</span> <span class="ot">=</span> <span class="st">&quot;Fips&quot;</span>, <span class="st">&quot;year&quot;</span> <span class="ot">=</span> <span class="st">&quot;Year&quot;</span>))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span>louisiana_annual, <span class="fu">aes</span>(<span class="at">fill =</span> Cases))<span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">high =</span> <span class="st">&quot;green&quot;</span>)<span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()<span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-archive2023" class="csl-entry">
+2023. <em>NHC Data Archive</em>. <a href="https://www.nhc.noaa.gov/data/">https://www.nhc.noaa.gov/data/</a>.
+</div>
+<div id="ref-anderson2021storm" class="csl-entry">
+Anderson, Brooke, Andrea Schumacher, Seth Guikema, Steven Quiring,
+Joshua Ferreri, Elizabeth Tennant, and Jordan Robinson. 2021.
+<em>Stormwindmodel: Model Tropical Cyclone Wind Speeds</em>. <a href="https://github.com/geanders/stormwindmodel">https://github.com/geanders/stormwindmodel</a>.
+</div>
+<div id="ref-caillouet2020temporal" class="csl-entry">
+Caillouët, &amp;amp; Robertson, K. A. 2020. <span>“Temporal and Spatial
+Impacts of Hurricane Damage on West Nile Virus Transmission and Human
+Risk.”</span> <em>Journal of the American Mosquito Control
+Association</em> 36.
+</div>
+<div id="ref-cdc2022" class="csl-entry">
+<span>“Symptoms, Diagnosis, &amp;Amp; Treatment.”</span> 2022.
+<em>Centers for Disease Control and Prevention</em>. Centers for Disease
+Control; Prevention. <a href="https://www.cdc.gov/westnile/symptoms/index.html">https://www.cdc.gov/westnile/symptoms/index.html</a>.
+</div>
+<div id="ref-tropical2021" class="csl-entry">
+<span>“Tropical Cyclone Climatology.”</span> 2021. <em>Tropical Cyclone
+Climatology</em>. <a href="https://www.nhc.noaa.gov/climo/?text">https://www.nhc.noaa.gov/climo/?text</a>.
+</div>
+<div id="ref-beaufort2016" class="csl-entry">
+US Department of Commerce, NOAA. 2016. <span>“Beaufort Wind
+Scale.”</span> <em>National Weather Service</em>. NOAA’s National
+Weather Service. <a href="https://www.weather.gov/mfl/beaufort">https://www.weather.gov/mfl/beaufort</a>.
+</div>
+<div id="ref-wnv2022" class="csl-entry">
+<span>“West Nile Virus: LA Dept. Of Health.”</span> 2022. <em>West Nile
+Virus | La Dept. Of Health</em>. <a href="https://ldh.la.gov/page/539">https://ldh.la.gov/page/539</a>.
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
