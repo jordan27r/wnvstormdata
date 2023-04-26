@@ -5,6 +5,7 @@ library(lubridate)
 library(stormwindmodel)
 library(tigris)
 library(sf)
+library(stringr)
 
 louisiana <- counties(state="LA", class = "sf", cb = T) %>%
   mutate(fips = paste0(STATEFP,COUNTYFP))
@@ -35,15 +36,17 @@ storm_time <- hurr_tracks %>%
   select(storm_id, gridid, date_time_max_wind, vmax_sust_knots)
 
 
-wnv$Exposure = 0
-wnv$Storm = "NA"
+wnv$exposure = 0
+wnv$storm = "NA"
+wnv$wind = 0
 
 for (i in 1:nrow(wnv)){
   for (j in 1:nrow(storm_time)){
     if(storm_time$gridid[j] == wnv$Fips[i]){
       if (storm_time$date_time_max_wind[j] %within% wnv$record_date[i]){
-        wnv$Exposure[i] = 1
-        wnv$Storm[i] = storm_time$storm_id[j]
+        wnv$exposure[i] = 1
+        wnv$storm[i] = storm_time$storm_id[j]
+        wnv$wind[i] = storm_time$vmax_sust_knots[j]
       }
     }
   }
@@ -51,7 +54,8 @@ for (i in 1:nrow(wnv)){
 
 
 wnv_2002_2021_stormexposure <- wnv %>%
-  select(Parish, Fips, StartDate, EndDate, Cases, Exposure, Storm)
+  select(Parish, Fips, StartDate, EndDate, Cases, exposure, storm, wind) %>%
+  rename(parish=Parish, fips = Fips, startDate = StartDate, endDate = EndDate, cases = Cases)
 
 
 save(wnv_2002_2021_stormexposure, file ="data//wnv_2002_2021_stormexposure.rda")

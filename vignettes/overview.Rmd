@@ -32,7 +32,7 @@ library(ggplot2)
 
 ## Summary
 
-  The data provided in `wnvstormdata` integrates weekly data on tropical cyclone exposure and West Nile Virus incidence for parishes in Louisiana from 2002--2021 to determine if a storm occurred in each parish for the observed week. This data set provides researchers interested in the association between vector-borne disease prevalence and hurricanes with data on cases numbers and when hurricane exposure took place paired by location and time interval.
+  The data provided in `wnvstormdata` integrates weekly data on tropical cyclone exposure and West Nile Virus confirmed cases for parishes in Louisiana from 2002--2021 to determine if a storm occurred in each parish for the observed week. This data set provides researchers interested in the association between vector-borne disease prevalence and hurricanes with data on cases numbers and when hurricane exposure took place paired by location and time interval.
   
   The following code gives a sample of the linked data set `wnv_2002_2021_stormexposure`. The data is comprised into a dataframe with seven columns:
   * parish: A character object of the parish name
@@ -61,7 +61,7 @@ head(wnv_2002_2021_stormexposure)
   
   This data package sources data from the Louisiana Department of Public Health (LDPH) [@wnv2022] and National Oceanic and Atmospheric Administration (NOAA) [@archive2023]. The disease data needed from LDPH is found in PDFs, which are not a proper format for further analysis. There are weekly and annual summary PDFs from 2002--2021. Extracting information from these files manually is time consuming and can introduce errors. With this data set, we have already gone through all of the files and extracted needed data. This work speeds up the process for researchers and reduces the risk of clerical errors. 
   
-  In addition, the disease and storm data need to be integrated for proper analysis. The disease data and hurricane data are originally collected in different time intervals. The WNV incidence data is presented in week numbers out of the year, while the storm data is recorded in year/month/day format, with 15 minute increments for each wind observation in the generated wind fields. The CDC weeks have been converted to intervals notated in the year/month/day format so that both data sets align. This was used to identify if a hurricane occurred during each week of observation. The other aspect of determining storm exposure is location. For this step, the `stormwindmodel` R package was used to model wind fields for storm tracks recorded in the NOAA dataset. The `get_grid_winds` function uses parish coordinates to determine which parish a wind field observation was made in [@anderson2021storm]. The grid_id provided from the function was then filtered by each WNV observation's FIPs code. We considered an observance week to be exposed if there were sustained winds of at least 34 knots during the week period and in the parish's geographic coordinates. 34 knots is the threshold for which NOAA classifies a tropical cyclone as a tropical storm [@tropical2021]. Wind speeds of at least 34 knots are considered gale force, meaning they are strong and persistent. These are described on the Beaufort Wind Scale as the wind strength at which twigs and small branches start falling off of trees[@beaufort2016]. For these exposed observations, the name of the storm the winds were from is also noted in the storm column.
+  In addition, the disease and storm data need to be integrated for proper analysis. The disease data and hurricane data are originally collected in different time intervals. The WNV confirmed case data is presented in week numbers out of the year, while the storm data is recorded in year/month/day format, with 15 minute increments for each wind observation in the generated wind fields. The CDC weeks have been converted to intervals notated in the year/month/day format so that both data sets align. This was used to identify if a hurricane occurred during each week of observation. The other aspect of determining storm exposure is location. For this step, the `stormwindmodel` R package was used to model wind fields for storm tracks recorded in the NOAA dataset. The `get_grid_winds` function uses parish coordinates to determine which parish a wind field observation was made in [@anderson2021storm]. The grid_id provided from the function was then filtered by each WNV observation's FIPs code. We considered an observance week to be exposed if there were sustained winds of at least 34 knots during the week period and in the parish's geographic coordinates. 34 knots is the threshold for which NOAA classifies a tropical cyclone as a tropical storm [@tropical2021]. Wind speeds of at least 34 knots are considered gale force, meaning they are strong and persistent. These are described on the Beaufort Wind Scale as the wind strength at which twigs and small branches start falling off of trees[@beaufort2016]. For these exposed observations, the name of the storm the winds were from is also noted in the storm column.
 
 ## Examples of Working with Data
 
@@ -75,12 +75,6 @@ storm <- hurr_tracks %>%
     mutate(ymd_date = lubridate::ymd_hm(date)) %>% 
   tidyr::separate(storm_id, c("storm", "year")) %>% 
   filter(storm == "Katrina")
-
-# winds <- get_grid_winds(storm) %>% 
-#   filter(gridid %in% katrina$Fips) %>% 
-#   left_join(katrinayear, by = c("gridid" = "Fips")) 
-# 
-# add_storm_track(storm, plot_object = map_wind(winds, value = "Cases", break_point = 1))
 
 storm2 <- storm %>% 
   filter(28 <latitude & latitude<35)
@@ -97,39 +91,39 @@ katrina_6month_interval <- interval(start = min(storm2$ymd_date), end = (max(sto
 
 #Cases
 katrina_initial <- wnv_2002_2021_stormexposure %>% 
-  filter(int_overlaps(interval(StartDate, EndDate), katrina_week_interval)) %>% 
-  group_by(Parish) %>% 
+  filter(int_overlaps(interval(startDate, endDate), katrina_week_interval)) %>% 
+  group_by(parish) %>% 
   summarize(interval = "That Week",
-            Fips = unique(Fips),
-            Cases = sum(Cases),
-            exposure = if_else(sum(Storm == "Katrina-2005")>0, "yes", "no"))
+            fips = unique(fips),
+            cases = sum(cases),
+            exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no"))
 
   
 katrina_1month <- wnv_2002_2021_stormexposure %>% 
-  filter(int_overlaps(interval(StartDate, EndDate), katrina_1month_interval)) %>% 
-  group_by(Parish) %>% 
+  filter(int_overlaps(interval(startDate, endDate), katrina_1month_interval)) %>% 
+  group_by(parish) %>% 
   summarize(interval = "1 month",
-            Fips = unique(Fips),
-            Cases = sum(Cases),
-            exposure = if_else(sum(Storm == "Katrina-2005")>0, "yes", "no"))
+            fips = unique(fips),
+            cases = sum(cases),
+            exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no"))
   
 katrina_6month <- wnv_2002_2021_stormexposure %>% 
-  filter(int_overlaps(interval(StartDate, EndDate), katrina_6month_interval)) %>% 
-  group_by(Parish) %>% 
+  filter(int_overlaps(interval(startDate, endDate), katrina_6month_interval)) %>% 
+  group_by(parish) %>% 
   summarize(interval = "6 months",
-            Fips = unique(Fips),
-            Cases = sum(Cases),
-            exposure = if_else(sum(Storm == "Katrina-2005")>0, "yes", "no"))
+            fips = unique(fips),
+            cases = sum(cases),
+            exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no"))
   
 
 katrinayear <- wnv_2002_2021_stormexposure %>% 
-  mutate(Year = year(StartDate)) %>% 
-  filter(Year == 2005 & EndDate > min(storm2$ymd_date)) %>% 
-  group_by(Parish) %>% 
+  mutate(year = year(startDate)) %>% 
+  filter(year == 2005 & endDate > min(storm2$ymd_date)) %>% 
+  group_by(parish) %>% 
   summarize(interval = "Rest of Year",
-            Fips = unique(Fips),
-            Cases = sum(Cases),
-            exposure = if_else(sum(Storm == "Katrina-2005")>0, "yes", "no")) %>% 
+            fips = unique(fips),
+            cases = sum(cases),
+            exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no")) %>% 
   full_join(katrina_initial) %>% 
   full_join(katrina_1month) %>% 
   full_join(katrina_6month)
@@ -137,15 +131,16 @@ katrinayear <- wnv_2002_2021_stormexposure %>%
 
 We can then take Louisiana parish coordinate data from `tigris` to get the coordinates necessary for plotting. This information is integrated with our case dataframe by FIPs code. Then, we can layer our state case counts with the storm track from above, faceting by the `interval` column from the case analysis dataframe to create a plot per each interval of interest, resulting in Figure 1:
 
-```{r mapping, message=FALSE, warning=FALSE, results = 'hide'}
+```{r mapping, message=FALSE, warning=FALSE, results = 'hide', fig.width = 7}
 #Louisiana map
 louisiana <- counties(state="LA", class = "sf", cb = T) %>% 
   mutate(fips = paste0(STATEFP,COUNTYFP)) %>% 
-  left_join(katrinayear, by = c("fips" = "Fips"))
+  left_join(katrinayear, by = c("fips" = "fips")) %>% 
+  mutate(across(interval, factor, levels=c("That Week","1 month","6 months", "Rest of Year")))
 
 #Plot
 ggplot()+
-          geom_sf(data = louisiana, aes(fill = Cases, color = exposure))+
+          geom_sf(data = louisiana, aes(fill = cases, color = exposure))+
           geom_path(data = storm2, aes(x = longitude, y = latitude), color = "Red", size = 1)+
           scale_fill_gradient(low = "blue", high = "green")+
           scale_color_manual(values = c(NA, "red"))+
@@ -155,26 +150,26 @@ ggplot()+
 
 ```
 
-General case analysis is also accessible via `wnvstormdata` for WNV cases in Louisiana. The PDF fixed-width layout the WNV incidence data is published in is easy to read, making it good for communication to the public. However, it is difficult for those interested in further analysis to use. Users can use the case data provided in the `wnv_2002_2021_stormexposure` for case-specific research without using the storm exposure aspects. This could also be used to measure exposure to other climate factors, such as temperature or precipitation.
+General case analysis is also accessible via `wnvstormdata` for WNV cases in Louisiana. The PDF fixed-width layout the WNV confirmed case data is published in is easy to read, making it good for communication to the public. However, it is difficult for those interested in further analysis to use. Users can use the case data provided in the `wnv_2002_2021_stormexposure` for case-specific research without using the storm exposure aspects. This could also be used to measure exposure to other climate factors, such as temperature or precipitation.
 
 Data retrieved from the Louisiana Department of Public Health are available in this package in dataframe format. This allows for easy analysis of trends over the years:
 
-```{r yearly}
+```{r yearly, fig.width = 7, fig.height=7}
 plotdata <- wnv_2002_2021_stormexposure %>% 
-  mutate(Year = year(StartDate)) %>% 
-  group_by(Year, Parish) %>% 
-  summarize(Cases = sum(Cases), 
-            Fips = unique(Fips))
+  mutate(year = year(startDate)) %>% 
+  group_by(year, parish) %>% 
+  summarize(cases = sum(cases), 
+            fips = unique(fips))
 
-year <-list(year = as.numeric(unique(plotdata$Year))) 
+year <-list(year = as.numeric(unique(plotdata$year))) 
 
 louisiana_annual <- counties(state = "LA", class = "sf", cb = T) %>% 
   mutate(year = year) %>% 
   unnest(year) %>% 
-  left_join(plotdata, by = c("GEOID" = "Fips", "year" = "Year"))
+  left_join(plotdata, by = c("GEOID" = "fips", "year" = "year"))
 
 ggplot()+
-  geom_sf(data =louisiana_annual, aes(fill = Cases))+
+  geom_sf(data =louisiana_annual, aes(fill = cases))+
   scale_fill_gradient(low = "blue", high = "green")+
   theme_void()+
   facet_wrap(~year)

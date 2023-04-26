@@ -8,13 +8,14 @@
 #' @format ## `wnv_2002_2021_stormexposure`
 #' A data frame with 19,272 rows and 6 columns:
 #' \describe{
-#'   \item{Parish}{Character string with Parish name}
-#'   \item{Fips}{Character string with 5 Number FIPs Cpde for Parish}
-#'   \item{BeginningDate}{Date Object with Beginning of CDC Epidemiological Week}
-#'   \item{EndDate}{Date Object with End of CDC Epidemiological Week}
-#'   \item{Cases}{Double object with Number of Cases During Epidemiological Week}
-#'   \item{Exposure}{Double Object of Parish Exposure to a Storm with Winds of at Least 34 Knots, Denoted 1 for Exposure}
-#'   \item{Storm}{Characyer Obeject of what Stomr Occured if Exposed}
+#'   \item{parish}{Character string with Parish name}
+#'   \item{fips}{Character string with 5 Number FIPs Cpde for Parish}
+#'   \item{startDate}{Date Object with Beginning of CDC Epidemiological Week}
+#'   \item{endDate}{Date Object with End of CDC Epidemiological Week}
+#'   \item{cases}{Double object with Number of Cases During Epidemiological Week}
+#'   \item{exposure}{Double Object of Parish Exposure to a Storm with Winds of at Least 34 Knots, Denoted 1 for Exposure}
+#'   \item{storm}{Characyer Obeject of what Storm Occured if Exposed}
+#'   \item{wind}{Numeric Object with Max Sustained Wind in Knots if Storm Exposure Occured}
 #' }
 #'
 #'@examples
