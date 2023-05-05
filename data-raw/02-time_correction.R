@@ -23,7 +23,7 @@ letters <- data %>%
   # mutate(month = lubridate::ym(paste(Year, Month, sep="-"))) %>%
   mutate(yearweek = as.numeric(strftime(my(paste0(Month,"-",Year)), format = "%U")) + as.numeric(Week)) %>%
   mutate(StartDate = MMWRweek2Date(as.numeric(Year), as.numeric(yearweek))) %>%
-  mutate(EndDate = StartDate + days(7)) %>%
+  mutate(EndDate = StartDate + days(6)) %>%
   select(Parish, StartDate, EndDate, Cases)
 
 week_num <- data %>%
@@ -32,7 +32,7 @@ week_num <- data %>%
   mutate(Year = str_extract(Week, "[:digit:]{4}"),
          Week = str_extract(Week, "[:digit:]{1,2}(?=[:blank:])"))%>%
   mutate(StartDate = MMWRweek2Date(as.numeric(Year), as.numeric(Week))) %>%
-  mutate(EndDate = StartDate + days(7)) %>%
+  mutate(EndDate = StartDate + days(6)) %>%
   select(Parish, StartDate, EndDate, Cases)
 
 with_dash <- data %>%
@@ -41,7 +41,7 @@ with_dash <- data %>%
          Week = str_extract(Week, "[:digit:]{1,2}-[:digit:]{1,2}")) %>%
   mutate(Week = str_extract(Week, "[:digit:]{1,2}(?=-)")) %>%
   mutate(StartDate = MMWRweek2Date(as.numeric(Year), as.numeric(Week))) %>%
-  mutate(EndDate = StartDate + days(7)) %>%
+  mutate(EndDate = StartDate + days(6)) %>%
   select(Parish, StartDate, EndDate, Cases)
 
 
@@ -51,7 +51,7 @@ dig4 <- data %>%
   mutate(Year = str_extract(Week, "[:digit:]{2}"),
          Week = str_sub(Week, start = -2, end = -1)) %>%
   mutate(StartDate = MMWRweek2Date(as.numeric(paste0("20",Year)), as.numeric(Week))) %>%
-  mutate(EndDate = StartDate + days(7)) %>%
+  mutate(EndDate = StartDate + days(6)) %>%
   select(Parish, StartDate, EndDate, Cases)
 
 corrected <- week_num %>%
