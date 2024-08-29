@@ -30,7 +30,7 @@ data02 <- fixed2 %>%
 
 
 ## 2003 ####
-file03 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNVsummary2003.pdf')
+file03 <- paste('~//wnvstormdata//data-raw//wnv_source//WNVsummary2003.pdf')
 
 
 txt <- pdf_text(file03)
@@ -59,7 +59,7 @@ data03 <- fixed3 %>%
   rename(Parish = 1)
 
 ## 2004 ####
-file04 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//EncephalitisWNVAnnualSummary2004.pdf')
+file04 <- paste('~//wnvstormdata//data-raw//wnv_source//EncephalitisWNVAnnualSummary2004.pdf')
 
 txt <- pdf_text(file04)
 
@@ -87,7 +87,7 @@ data04 <- fixed4 %>%
 
 ## 2005 ####
 
-file05 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//EncephalitisWNVAnnualSummary2005a.pdf')
+file05 <- paste('~//wnvstormdata//data-raw//wnv_source//EncephalitisWNVAnnualSummary2005a.pdf')
 
 txt <- pdf_text(file05)
 
@@ -120,7 +120,7 @@ data05 <- data05%>%
 
 ## 2006 ####
 
-file06 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNV2006Report.pdf')
+file06 <- paste('~//wnvstormdata//data-raw//wnv_source//WNV2006Report.pdf')
 
 txt <- pdf_text(file06)
 
@@ -147,7 +147,7 @@ data06 <- fixed6 %>%
 
 ## 2007 ####
 
-file07 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//Final2007.pdf')
+file07 <- paste('~//wnvstormdata//data-raw//wnv_source//Final2007.pdf')
 
 txt <- pdf_text(file07)
 
@@ -179,7 +179,7 @@ data07 <- data07 %>%
 ## 2008 ####
 
 
-file08 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNV2008ReportFinal.pdf')
+file08 <- paste('~//wnvstormdata//data-raw//wnv_source//WNV2008ReportFinal.pdf')
 
 txt <- pdf_text(file08)
 
@@ -227,7 +227,7 @@ data08 <- bind_rows(fixed8_1,fixed8_2,fixed8_3) %>%
 
 ## 2009 ####
 
-file09 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNV2009ReportFinal1.pdf')
+file09 <- paste('~//wnvstormdata//data-raw//wnv_source//WNV2009ReportFinal1.pdf')
 
 txt <- pdf_text(file09)
 
@@ -267,7 +267,7 @@ data09 <- bind_rows(fixed9_1,fixed9_2,fixed9_3) %>%
   mutate(Cases = as.character(Cases))
 
 ## 2010 ####
-file10 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNV2010ReportFinal.pdf')
+file10 <- paste('~//wnvstormdata//data-raw//wnv_source//WNV2010ReportFinal.pdf')
 
 txt <- pdf_text(file10)
 
@@ -298,7 +298,7 @@ data10 <- fixed10_1 %>%
   mutate(Cases = as.character(Cases))
 
 ## 2011 ####
-file11 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNV2011ReportFinal.pdf')
+file11 <- paste('~//wnvstormdata//data-raw//wnv_source//WNV2011ReportFinal.pdf')
 
 txt <- pdf_text(file11)
 
@@ -329,7 +329,7 @@ data11 <- fixed11 %>%
   mutate(Cases = as.character(Cases))
 
 ## 2012 ####
-file12 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNVSummary12wk49.pdf')
+file12 <- paste('~//wnvstormdata//data-raw//wnv_source//WNVSummary12wk49.pdf')
 
 txt <- pdf_text(file12)
 
@@ -362,7 +362,7 @@ data12 <- fixed12 %>%
 
 
 ## 2013 ####
-file13 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//WNVSummary13wk35.pdf')
+file13 <- paste('~//wnvstormdata//data-raw//wnv_source//WNVSummary13wk35.pdf')
 
 txt <- pdf_text(file13)
 
@@ -393,7 +393,7 @@ data13 <- fixed13 %>%
   mutate(Cases = as.character(Cases))
 
 ## 2014 ####
-file14 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//ARBO_1452.pdf')
+file14 <- paste('~//wnvstormdata//data-raw//wnv_source//ARBO_1452.pdf')
 
 txt <- pdf_text(file14)
 
@@ -421,7 +421,7 @@ data14 <- fixed14 %>%
   filter(!str_detect(Parish, "1"))
 
 ## 2015 ####
-file15 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//ARBO_1552.pdf')
+file15 <- paste('~//wnvstormdata//data-raw//wnv_source//ARBO_1552.pdf')
 
 txt <- pdf_text(file15)
 
@@ -448,7 +448,7 @@ data15 <- fixed15 %>%
   mutate(Week = paste0(Week," 2015"))
 
 ## 2016 ####
-file16 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2016//ARBO_1650.pdf')
+file16 <- paste('~//wnvstormdata//data-raw//wnv_source//2016//ARBO_1650.pdf')
 
 txt <- pdf_text(file16)
 
@@ -476,7 +476,7 @@ data16 <- fixed16 %>%
 
 
 ## 2017 ####
-file17 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2017//ARBO_1744.pdf')
+file17 <- paste('~//wnvstormdata//data-raw//wnv_source//2017//ARBO_1744.pdf')
 
 txt <- pdf_text(file17)
 
@@ -503,7 +503,7 @@ data17 <- fixed17 %>%
   mutate(Week = paste0(Week," 2017"))
 
 ## 2018 ####
-file18 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2018//ARBO_1840.pdf')
+file18 <- paste('~//wnvstormdata//data-raw//wnv_source//2018//ARBO_1840.pdf')
 
 txt <- pdf_text(file18)
 
@@ -531,7 +531,7 @@ data18 <- fixed18 %>%
   filter(!str_detect(Parish, "5"))
 
 ## 2019 ####
-file19 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2019//ARBO_1945.pdf')
+file19 <- paste('~//wnvstormdata//data-raw//wnv_source//2019//ARBO_1945.pdf')
 
 txt <- pdf_text(file19)
 
@@ -559,7 +559,7 @@ data19 <- fixed19 %>%
   filter(!str_detect(Parish, "1") & !str_detect(Parish, "3") & !str_detect(Parish, "4") & !str_detect(Parish,"5"))
 
 ## 2020 ####
-file20 <- paste('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2020//ARBO_2052_rev.pdf')
+file20 <- paste('~//wnvstormdata//data-raw//wnv_source//2020//ARBO_2052_rev.pdf')
 
 txt <- pdf_text(file20)
 
@@ -591,16 +591,16 @@ data20 <- fixed20 %>%
 
 
 ## 2021 ####
-raw.files21 <- tibble(filename = list.files('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2021//'))
+raw.files21 <- tibble(filename = list.files('~//wnvstormdata//data-raw//wnv_source//2021//'))
 
 raw.file.paths21 <- raw.files21  %>%
-  mutate(filepath = paste0('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2021//', filename))
+  mutate(filepath = paste0('~//wnvstormdata//data-raw//wnv_source//2021//', filename))
 
 ## 2022 ####
-raw.files22 <- tibble(filename = list.files('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2022//'))
+raw.files22 <- tibble(filename = list.files('~//wnvstormdata//data-raw//wnv_source//2022//'))
 
 raw.file.paths22 <- raw.files22  %>%
-  mutate(filepath = paste0('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2022//', filename))
+  mutate(filepath = paste0('~//wnvstormdata//data-raw//wnv_source//2022//', filename))
 
 
 raw.file.paths <- raw.file.paths21 %>%
@@ -650,17 +650,20 @@ for (i in 1:nrow(raw.file.paths)){
 data21_22 <- do.call(bind_rows, data21_22)
 
 
-## 2022 files ####
-raw.files22 <- tibble(filename = list.files('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2022//'))
+## 2022 files format 1 ####
+raw.files22 <- tibble(filename = list.files('~//wnvstormdata//data-raw//wnv_source//2022//'))
 
 raw.file.paths22 <- raw.files22  %>%
-  mutate(filepath = paste0('~//Honors Thesis//WNV_Hurricane_datapackage//wnv_data//2022//', filename))
+  mutate(filepath = paste0('~//wnvstormdata//data-raw//wnv_source//2022//', filename))
 
 #i= 5
 data22 = list()
-
-for (i in 5:nrow(raw.file.paths22)){
+count_of_no_cases = 0
+for (i in 1:nrow(raw.file.paths22)){
   txt <- pdf_text(raw.file.paths22$filepath[i])
+
+  weekNum <- str_extract(raw.files22$filename[i], "[:digit:]{4}")
+
 
   # get the working directory
   wd <- getwd()
@@ -676,29 +679,205 @@ for (i in 5:nrow(raw.file.paths22)){
   #Parish to Total
   get_rownums <- read.fwf(file_name, widths = 24)
 
-  start <- which(str_detect(get_rownums$V1,"Table 3"))
-  end <- which(str_detect(get_rownums$V1,"Total"))[3]
+  start <- which(str_detect(get_rownums$V1,"LDH Region"))[1]
 
+  end <- which(str_detect(get_rownums$V1,"Total"))[3]-1
+  if(is.na(start)){
+    count_of_no_cases = count_of_no_cases + 1
+  }else{
   fixed <- read.fwf(file_name, widths = c(24, 115,8, 8, 7),
                     skip = start, n = (end-start))
 
   #  dates <- txt[1]
   #dates <- str_extract(dates, "(?<=From )[:alpha:]{4,8} [:digit:]{1,2} - [:alpha:]{4,8} [:digit:]{1,2}")
 
-  fixed <- fixed %>%  slice(4:nrow(fixed)) %>%
-    janitor::row_to_names(row_number = 1) %>%
-    select(1, contains("NID", ignore.case=FALSE),contains("F", ignore.case=FALSE)) %>%
-    rename(Parish = 1,  Cases1 = 2, Cases2=3) %>%
-    mutate(Cases = as.character(as.numeric(Cases1) + as.numeric(Cases2)),
-           Week = str_extract(raw.file.paths22$filename[i], "[:digit:]{4}") )%>%
-    slice(-c(nrow(fixed))) %>%
-    filter(str_detect(Parish, "LDH")) %>%
-    select(Parish, Week, Cases)
+  fixed <- fixed %>%
+ #   janitor::row_to_names(row_number = 1) %>%
+    select(-V2) %>%
+    group_by(V1) %>%
+    summarise(totalCases = sum(across(V3:V5, ~ sum(as.numeric(.), na.rm = TRUE)))) %>%
+    rename(Parish=V1, AccruedCases=totalCases) %>%
+ #   slice(-c(nrow(fixed))) %>%
+#    filter(str_detect(Parish, "LDH")) %>%
+    mutate(Week = weekNum) %>%
+    select(Parish, Week, AccruedCases)
 
-  data22[[i]] = fixed
+  data22[[i-count_of_no_cases]] = fixed
+  }
 }
 
 data22 <- do.call(bind_rows, data22)
+
+adjusted_data22 <- list()
+adjusted_data22[[1]] = data22 %>% filter(Week == 2226) %>%  rename(Cases=AccruedCases)
+all_weeks <- str_extract(raw.files22$filename, "[:digit:]{4}")
+
+for (i in 2:length(all_weeks)){
+  week <- all_weeks[i]
+
+  previousWeeks <- data22 %>%
+    filter(Week == all_weeks[i-1]) %>%
+    group_by(Parish) %>%
+    summarize(previousCases = sum(AccruedCases))
+
+  sampleWeek <- data22 %>%
+    filter(Week == week) %>%
+    left_join(previousWeeks,by='Parish') %>%
+    mutate_all(~replace(., is.na(.), 0)) %>%
+    mutate(Cases = AccruedCases - previousCases) %>%
+    select(Parish, Week, Cases)
+
+  adjusted_data22[[i]] = sampleWeek
+
+}
+data22 <- bind_rows(adjusted_data22)
+
+## 2022 format 2 ####
+#Read all files in - stats are acumulative
+#create Table
+
+raw.files22b <- tibble(filename = list.files('~//wnvstormdata//data-raw//wnv_source//2022b//'))
+
+raw.file.paths22b <- raw.files22b  %>%
+  mutate(filepath = paste0('~//wnvstormdata//data-raw//wnv_source//2022b//', filename))
+
+#i= 5
+data22b = list()
+
+for (i in 1:nrow(raw.file.paths22b)){
+  txt <- pdf_text(raw.file.paths22b$filepath[i])
+
+  weekNum <- str_extract(raw.files22b$filename[i], "[:digit:]{4}")
+
+  # get the working directory
+  wd <- getwd()
+
+  #write the file to the working directory
+  file_name <- paste0(wd, "/data-raw/", "temp.txt")
+  write(txt, file = file_name, sep = "\t")
+
+  # Convert to a table. Data is located starting line 25, and lasts 25 lines
+  # P.S: I've tried this code with and without the "sep" argument. No change.
+  #test1 <- read.table(file_name, fill = TRUE, skip = 71)
+
+  #Parish to Total
+  get_rownums <- read.fwf(file_name, widths = 150)
+
+  start <- which(str_detect(get_rownums$V1,"LDH Region"))[1]-1
+  end <- last(which(str_detect(get_rownums$V1,"LDH Region 9*")))
+
+  fixed <- read.fwf(file_name, widths = c(13,120, 13, 10, 10),
+                    skip = start, n = (end-start))
+  fixed <- fixed %>%
+    select(-c(V2)) %>%
+    group_by(V1) %>%
+    summarise(totalCases = sum(across(V3:V5, ~ sum(as.numeric(.), na.rm = TRUE)))) %>%
+    mutate(Week = weekNum) %>%
+    rename(Parish=1, AccruedCases=2)
+
+  data22b[[i]] = fixed
+}
+data22b <- bind_rows(data22b) %>%
+  mutate(Parish = str_squish(Parish))
+
+adjusted_data22b <- list()
+adjusted_data22b[[1]] = data22b %>% filter(Week == 2326) %>%  rename(Cases=AccruedCases)
+all_weeks <- str_extract(raw.files22b$filename, "[:digit:]{4}")
+
+for (i in 2:length(all_weeks)){
+  week <- all_weeks[i]
+
+  previousWeeks <- data22b %>%
+    filter(Week == all_weeks[i-1]) %>%
+    group_by(Parish) %>%
+    summarize(previousCases = sum(AccruedCases))
+
+  sampleWeek <- data22b %>%
+    filter(Week == week) %>%
+    left_join(previousWeeks,by='Parish') %>%
+    mutate_all(~replace(., is.na(.), 0)) %>%
+    mutate(Cases = AccruedCases - previousCases) %>%
+    select(Parish, Week, Cases)
+
+  adjusted_data22b[[i]] = sampleWeek
+
+}
+data22b <- bind_rows(adjusted_data22b)
+
+## 2023 ####
+#Read all files in - stats are acumulative
+#create Table
+
+raw.files23 <- tibble(filename = list.files('~//wnvstormdata//data-raw//wnv_source//2023//'))
+
+raw.file.paths23 <- raw.files23  %>%
+  mutate(filepath = paste0('~//wnvstormdata//data-raw//wnv_source//2023//', filename))
+
+#i= 5
+data23 = list()
+
+for (i in 1:nrow(raw.file.paths23)){
+  txt <- pdf_text(raw.file.paths23$filepath[i])
+
+  weekNum <- str_extract(raw.files23$filename[i], "[:digit:]{4}")
+
+  # get the working directory
+  wd <- getwd()
+
+  #write the file to the working directory
+  file_name <- paste0(wd, "/data-raw/", "temp.txt")
+  write(txt, file = file_name, sep = "\t")
+
+  # Convert to a table. Data is located starting line 25, and lasts 25 lines
+  # P.S: I've tried this code with and without the "sep" argument. No change.
+  #test1 <- read.table(file_name, fill = TRUE, skip = 71)
+
+  #Parish to Total
+  get_rownums <- read.fwf(file_name, widths = 73)
+
+  start <- which(str_detect(get_rownums$V1,"NID"))[2]-1
+  end <- which(str_detect(get_rownums$V1,"NID"))[3]-2
+
+  fixed <- read.fwf(file_name, widths = c(20, 24,12,5,5,5),
+                    skip = start, n = (end-start))
+  fixed <- fixed %>%
+    select(-c(V2,V6)) %>%
+    slice(-c(1,2)) %>%
+    group_by(V1) %>%
+    summarise(totalCases = sum(across(V3:V5, ~ sum(as.numeric(.), na.rm = TRUE)))) %>%
+    mutate(Week = weekNum) %>%
+    rename(Parish=1, AccruedCases=2)
+
+  data23[[i]] = fixed
+}
+data23 <- bind_rows(data23) %>%
+  mutate(Parish = str_squish(Parish))
+
+#Create new table that loops in and subtracts cumulative of all previous weeks to get actual weekly counts
+#group remaining by name, summarize total cases & subtract from current week
+adjusted_data23 <- list()
+adjusted_data23[[1]] = data23 %>% filter(Week == 2326) %>%  rename(Cases=AccruedCases)
+all_weeks <- str_extract(raw.files23$filename, "[:digit:]{4}")
+
+for (i in 2:length(all_weeks)){
+  week <- all_weeks[i]
+
+  previousWeeks <- data23 %>%
+    filter(Week == all_weeks[i-1]) %>%
+    group_by(Parish) %>%
+    summarize(previousCases = sum(AccruedCases))
+
+  sampleWeek <- data23 %>%
+    filter(Week == week) %>%
+    left_join(previousWeeks,by='Parish') %>%
+    mutate_all(~replace(., is.na(.), 0)) %>%
+    mutate(Cases = AccruedCases - previousCases) %>%
+    select(Parish, Week, Cases)
+
+  adjusted_data23[[i]] = sampleWeek
+
+}
+data23 <- bind_rows(adjusted_data23)
 
 ## Altogether ####
 
@@ -707,8 +886,9 @@ data <- data02 %>%
             data10, data11, data12, data13, data14, data15, data16,
             data17, data18,data19, data20) %>%
   mutate(Parish = str_extract(Parish, "(?<=[:digit:]).{1,30}")) %>%
-  bind_rows(data21_22, data22) %>%
+  bind_rows(data21_22) %>%
   mutate(Cases = as.numeric(Cases)) %>%
+  bind_rows( data22, data22b, data23) %>%
   mutate_if(is.numeric, ~replace_na(Cases, 0))
 
 save(data, file ="data-raw//data_reading.rda")

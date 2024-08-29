@@ -33,9 +33,9 @@ library(tidycensus)
 
 ## Summary
 
-  The data provided in `wnvstormdata` integrates weekly data on tropical cyclone exposure and West Nile Virus confirmed cases for parishes in Louisiana from 2002--2021 to determine if a storm occurred in each parish for the observed week. This data set provides researchers interested in the association between vector-borne disease prevalence and hurricanes with data on cases numbers and when hurricane exposure took place paired by location and time interval.
+  The data provided in `wnvstormdata` integrates weekly data on tropical cyclone exposure and West Nile Virus confirmed cases for parishes in Louisiana from 2002--2023 to determine if a storm occurred in each parish for the observed week. This data set provides researchers interested in the association between vector-borne disease prevalence and hurricanes with data on cases numbers and when hurricane exposure took place paired by location and time interval.
   
-  The following code gives a sample of the linked data set `wnv_2002_2021_stormexposure`. The data is comprised into a dataframe with seven columns:
+  The following code gives a sample of the linked data set `wnv_2002_2023_stormexposure`. The data is comprised into a dataframe with seven columns:
   
   * parish: A character object of the parish name
   * fips: A character object containing the five digit FIPs code for the parish
@@ -47,8 +47,8 @@ library(tidycensus)
   * wind: A numeric object containing the maximum sustained wind from a storm, if exposed
   
 ```{r datasample}
-data("wnv_2002_2021_stormexposure")
-head(wnv_2002_2021_stormexposure)
+data("wnv_2002_2023_stormexposure")
+head(wnv_2002_2023_stormexposure)
 ```
 
 
@@ -62,7 +62,7 @@ head(wnv_2002_2021_stormexposure)
 
 ## Methods
   
-  This data package sources data from the Louisiana Department of Public Health (LDPH) [@wnv2022] and National Oceanic and Atmospheric Administration (NOAA) [@archive2023]. The disease data needed from LDPH is found in PDFs, which are not an ideal format for further analysis. There are weekly and annual summary PDFs from 2002--2021. Extracting information from these files manually is time consuming and can introduce errors. With this data set, we have already gone through all of the files and extracted needed data. This work speeds up the process for researchers and reduces the risk of clerical errors. 
+  This data package sources data from the Louisiana Department of Public Health (LDPH) [@wnv2022] and National Oceanic and Atmospheric Administration (NOAA) [@archive2023]. The disease data needed from LDPH is found in PDFs, which are not an ideal format for further analysis. There are weekly and annual summary PDFs from 2002--2023. Extracting information from these files manually is time consuming and can introduce errors. With this data set, we have already gone through all of the files and extracted needed data. This work speeds up the process for researchers and reduces the risk of clerical errors. 
   
   In addition, the disease and storm data need to be integrated for proper analysis. The disease data and hurricane data are originally collected in different time intervals. The WNV confirmed case data is presented in week numbers out of the year, while the storm data is recorded in year/month/day format, with 15 minute increments for each wind observation in the generated wind fields. The CDC weeks have been converted to intervals notated in the year/month/day format so that both data sets align. This was used to identify if a hurricane occurred during each week of observation. The other aspect of determining storm exposure is location. For this step, the `stormwindmodel` R package was used to model wind fields for storm tracks recorded in the NOAA dataset. The `get_grid_winds` function uses parish coordinates to determine which parish a wind field observation was made in [@anderson2021storm]. The grid_id provided from the function was then filtered by each WNV observation's FIPs code. We considered an observance week to be exposed if there were sustained winds of at least 34 knots during the week period and in the parish's geographic coordinates. 34 knots is the threshold for which NOAA classifies a tropical cyclone as a tropical storm [@tropical2021]. Wind speeds of at least 34 knots are considered gale force, meaning they are strong and persistent. These are described on the Beaufort Wind Scale as the wind strength at which twigs and small branches start falling off of trees[@beaufort2016]. For these exposed observations, the name of the storm the winds were from is also noted in the storm column.
 
@@ -83,7 +83,7 @@ storm2 <- storm %>%
   filter(28 <latitude & latitude<35)
 ```
 
-For our sample model, we are interested in cases in Louisiana accuring in different intervals after the storm. First, we create intervals for each of the periods of interest: the week of the storm, one month after the storm, then the rest of the year after Katrina hit. The `wnv_2002_2021_stormexposure` dataset is filtered for each of these intervals, initially made into different dataframes. Then, for each respective interval, the cases are grouped by parish and summarized into the total cases. These interval data frames are all joined together. In addition, the counties that were exposed to the gale force winds from Katrina are notated as exposed, which will help us highlight them in the plotting section.
+For our sample model, we are interested in cases in Louisiana accuring in different intervals after the storm. First, we create intervals for each of the periods of interest: the week of the storm, one month after the storm, then the rest of the year after Katrina hit. The `wnv_2002_2023_stormexposure` dataset is filtered for each of these intervals, initially made into different dataframes. Then, for each respective interval, the cases are grouped by parish and summarized into the total cases. These interval data frames are all joined together. In addition, the counties that were exposed to the gale force winds from Katrina are notated as exposed, which will help us highlight them in the plotting section.
 
 ```{r casecode, message=FALSE, warning=FALSE}
 
@@ -93,7 +93,7 @@ katrina_1month_interval <- interval(start = min(storm2$ymd_date), end = (max(sto
 katrina_6month_interval <- interval(start = min(storm2$ymd_date), end = (max(storm2$ymd_date)+days(168)))
 
 #Cases
-katrina_initial <- wnv_2002_2021_stormexposure %>% 
+katrina_initial <- wnv_2002_2023_stormexposure %>% 
   filter(int_overlaps(interval(startDate, endDate), katrina_week_interval)) %>% 
   group_by(parish) %>% 
   summarize(interval = "That Week",
@@ -102,7 +102,7 @@ katrina_initial <- wnv_2002_2021_stormexposure %>%
             exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no"))
 
   
-katrina_1month <- wnv_2002_2021_stormexposure %>% 
+katrina_1month <- wnv_2002_2023_stormexposure %>% 
   filter(int_overlaps(interval(startDate, endDate), katrina_1month_interval)) %>% 
   group_by(parish) %>% 
   summarize(interval = "1 month",
@@ -110,7 +110,7 @@ katrina_1month <- wnv_2002_2021_stormexposure %>%
             cases = sum(cases),
             exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no"))
   
-katrina_6month <- wnv_2002_2021_stormexposure %>% 
+katrina_6month <- wnv_2002_2023_stormexposure %>% 
   filter(int_overlaps(interval(startDate, endDate), katrina_6month_interval)) %>% 
   group_by(parish) %>% 
   summarize(interval = "6 months",
@@ -119,7 +119,7 @@ katrina_6month <- wnv_2002_2021_stormexposure %>%
             exposure = if_else(sum(storm == "Katrina-2005")>0, "yes", "no"))
   
 
-katrinayear <- wnv_2002_2021_stormexposure %>% 
+katrinayear <- wnv_2002_2023_stormexposure %>% 
   mutate(year = year(startDate)) %>% 
   filter(year == 2005 & endDate > min(storm2$ymd_date)) %>% 
   group_by(parish) %>% 
@@ -135,38 +135,38 @@ katrinayear <- wnv_2002_2021_stormexposure %>%
 We can then take Louisiana parish coordinate data from `tigris` to get the coordinates necessary for plotting. This information is integrated with our case dataframe by FIPs code. Then, we can layer our state case counts with the storm track from above, faceting by the `interval` column from the case analysis dataframe to create a plot per each interval of interest, resulting in Figure 1:
 
 ```{r mapping, message=FALSE, warning=FALSE, results = 'hide', fig.width = 7, fig.height = 7}
-#Louisiana Population
-county_pops <- get_estimates(geography = "county", state = "LA", product = "population") %>% 
-  filter(variable == "POP")
+# #Louisiana Population
+# county_pops <- get_estimates(geography = "county", state = "LA", product = "population") %>% 
+#   filter(variable == "POP")
 
 #Louisiana map
 louisiana <- counties(state="LA", class = "sf", cb = T) %>% 
   mutate(fips = paste0(STATEFP,COUNTYFP)) %>% 
   left_join(katrinayear, by = c("fips" = "fips")) %>% 
-  mutate(across(interval, factor, levels=c("That Week","1 month","6 months", "Rest of Year"))) %>% 
-  left_join(county_pops, by = c("fips" = "GEOID")) %>% 
-  mutate(incidence = cases/value *100000)
+  mutate(across(interval, factor, levels=c("That Week","1 month","6 months", "Rest of Year")))# %>% 
+#  left_join(county_pops, by = c("fips" = "GEOID")) %>% 
+#  mutate(incidence = cases/value *100000)
 
 
 #Plot
 ggplot()+
-          geom_sf(data = louisiana, aes(fill = factor(round(incidence)), color = exposure))+
+          geom_sf(data = louisiana, aes(fill = factor(round(cases)), color = exposure))+
           geom_path(data = storm2, aes(x = longitude, y = latitude), color = "Red", size = 1)+
           scale_fill_brewer(palette = "YlGnBu")+
           scale_color_manual(values = c(NA, "red"))+
           theme_void()+
           facet_wrap(~interval)+
           guides(color = FALSE)+
-          labs(fill = "WNV Cases per 100,000 People")
+          labs(fill = "WNV Cases")
 
 ```
 
-General case analysis is also accessible via `wnvstormdata` for WNV cases in Louisiana. The PDF fixed-width layout the WNV confirmed case data is published in is easy to read, making it good for communication to the public. However, it is difficult for those interested in further analysis to use. Users can use the case data provided in the `wnv_2002_2021_stormexposure` for case-specific research without using the storm exposure aspects. This could also be used to measure exposure to other climate factors, such as temperature or precipitation.
+General case analysis is also accessible via `wnvstormdata` for WNV cases in Louisiana. The PDF fixed-width layout the WNV confirmed case data is published in is easy to read, making it good for communication to the public. However, it is difficult for those interested in further analysis to use. Users can use the case data provided in the `wnv_2002_2023_stormexposure` for case-specific research without using the storm exposure aspects. This could also be used to measure exposure to other climate factors, such as temperature or precipitation.
 
 Data retrieved from the Louisiana Department of Public Health are available in this package in dataframe format. This allows for easy analysis of trends over the years:
 
 ```{r yearly, fig.width = 7, fig.height=7}
-plotdata <- wnv_2002_2021_stormexposure %>% 
+plotdata <- wnv_2002_2023_stormexposure %>% 
   mutate(year = year(startDate)) %>% 
   group_by(year, parish) %>% 
   summarize(cases = sum(cases), 
@@ -175,15 +175,19 @@ plotdata <- wnv_2002_2021_stormexposure %>%
 year <-list(year = as.numeric(unique(plotdata$year))) 
 
 #Louisiana Population
-county_pops <- get_estimates(geography = "county", state = "LA", product = "population") %>% 
-  filter(variable == "POP")
+load("data-raw//pop_data_2015_2023.rda")
 
-louisiana_annual <- counties(state = "LA", class = "sf", cb = T) %>% 
+pop_data_2015_2023 <- pop_data_2015_2023 %>% 
+  mutate(year = as.numeric(year)) %>% 
+  select(-c(NAME))
+
+louisiana_annual <- counties(state = "LA", class = "sf", cb = T) %>%
   mutate(year = year,
-         fips = paste0(STATEFP,COUNTYFP)) %>% 
-  unnest(year) %>% 
-  left_join(plotdata, by = c("GEOID" = "fips", "year" = "year")) %>% 
-  left_join(county_pops, by = c("fips" = "GEOID")) %>% 
+         fips = paste0(STATEFP,COUNTYFP)) %>%
+  unnest(year) %>%
+  filter(year %in% c(2015:2023)) %>% 
+  left_join(plotdata, by = c("GEOID" = "fips", "year" = "year")) %>%
+  left_join(pop_data_2015_2023, by = c("GEOID" = "GEOID", 'year' = 'year')) %>%
   mutate(incidence = cases/value *100000)
 
       breaks <- c(0, 10, 35, 55, 80)
@@ -199,13 +203,14 @@ ggplot()+
   geom_sf(data =louisiana_annual, aes(fill = value))+
           scale_fill_brewer(palette = "YlGnBu")+
           theme_void()+
-          facet_wrap(~year)
+          facet_wrap(~year)+
+          labs(fill = "WNV Cases per 100,000 People")
 
 ```
 
 ## Limitations
 
-Some limitations are present within the West Nile Virus case data provided in this package. As noted by the Louisiana Department of Health, the WNV cases reported do not encompass all infected persons in the state. Only neuro-invasive diseases are reliably reported. Approximately one percent of asymptomatic and WNV fever cases are  diagnosed and reported to the health department. Asymptomatic cases are primarily diagnosed through blood donor screenings, and WNV fever cases are tested via serologic testing. For every diagnosed case of West Nile Virus neuro-invasive disease, the health department estimates there are 90 asymptomatic infections and 10 fever-causing infections that are not reported [@wnv2022]. Despite this discrepancy, the reported data still reflects changes in the burden of disease on communities, as the estimated scale of unreported cases is the same across all observations.
+Some limitations are present within the West Nile Virus case data provided in this package. Users should note that observations from 2022-07-24 -- 2022-12-25 are removed. During this period, parish-level observations were grouped into zones within Louisiana. This limited the ability to link case counts to specific FIPs codes. As noted by the Louisiana Department of Health, the WNV cases reported do not encompass all infected persons in the state. Only neuro-invasive diseases are reliably reported. Approximately one percent of asymptomatic and WNV fever cases are  diagnosed and reported to the health department. Asymptomatic cases are primarily diagnosed through blood donor screenings, and WNV fever cases are tested via serologic testing. For every diagnosed case of West Nile Virus neuro-invasive disease, the health department estimates there are 90 asymptomatic infections and 10 fever-causing infections that are not reported [@wnv2022]. Despite this discrepancy, the reported data still reflects changes in the burden of disease on communities, as the estimated scale of unreported cases is the same across all observations.
 
 ## GitHub Link
 To see more information on `wnvstormdata` you can access the GitHub page [here](https://github.com/jordan27r/wnvstormdata).

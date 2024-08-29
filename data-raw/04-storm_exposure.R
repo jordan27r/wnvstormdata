@@ -53,10 +53,10 @@ for (i in 1:nrow(wnv)){
 }
 
 
-wnv_2002_2021_stormexposure <- wnv %>%
+wnv_2002_2023_stormexposure <- wnv %>%
   select(Parish, Fips, StartDate, EndDate, Cases, exposure, storm, wind) %>%
   rename(parish=Parish, fips = Fips, startDate = StartDate, endDate = EndDate, cases = Cases)
 
 
-save(wnv_2002_2021_stormexposure, file ="data//wnv_2002_2021_stormexposure.rda")
-usethis::use_data(wnv_2002_2021_stormexposure, overwrite = TRUE)
+#save(wnv_2002_2023_stormexposure, file ="data//wnv_2002_2023_stormexposure.rda")
+usethis::use_data(wnv_2002_2023_stormexposure, overwrite = TRUE)
