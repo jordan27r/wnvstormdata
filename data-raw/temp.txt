@@ -1,171 +1,153 @@
-                                                                                                Louisiana Arbovirus Surveillance Summary 2022
-                                                                                                                        CDC Week 52
-                                                                                                           From January 1 - December 31, 2022
-                                                                                                     Contact Infectious Disease Epidemiology Section at:
-                                                                                                                       (504) 568-8313
-                                                                                                         sean.simonson@la.gov or emma.ortega@la.gov
+                        Louisiana Arbovirus Surveillance Summary 2023
+                                         CDC Week 52
+                                January 1 - December 30, 2023
+      Louisiana Department of Health • Office of Public Health • Infectious Disease Epidemiology Section
+                                               (504) 568-8313
+                             Sean.Simonson@la.gov or Emma.Ortega@la.gov
 
+This report presents currently available information about arboviral diseases in Louisiana. Cases of human infection and
+instances of positive mosquito testing can be used to understand the burden, risk, timing, and geographic distribution of
+arboviral diseases in the state.
 
+Arboviral diseases can be divided into two main categories: imported and endemic. Imported arboviral diseases are
+instances where individuals test positive for an infection after travelling to another country. These diseases are not
+typically transmitted within Louisiana and are not circulating in local mosquito populations. The imported arboviral
+diseases included in this report are chikungunya, dengue, and Zika. Endemic arboviral diseases are infections which
+occur in Louisiana, such as Eastern Equine Encephalitis, St. Louis Encephalitis, and West Nile Virus. West Nile Virus is the
+most common arboviral disease in the state and has been actively transmitted since it was first detected in 2002.
 
-This report presents currently available information about arboviral diseases in Louisiana. Cases of human infection and instances of positive mosquito testing
-can be used to understand the burden, risk, timing, and geographic distribution of arboviral diseases in the state.
+Laboratories and health care providers report cases of arboviral diseases to the Office of Public Health under the State
+Sanitary Code. However, not all cases are able to be detected. Between 80-90% of all WNV cases are asymptomatic,
+meaning these individuals would not seek testing. Occasionally these asymptomatic cases are detected through blood
+donation testing (PVD - Presumptive Viremic Donors), who are then interviewed to determine if they developed
+symptoms. Many symptomatic cases can be mild to moderate flu-like illnesses (West Nile Fever), and might not seek
+medical care or be tested. Only a small fraction of cases develop neuroinvasive disease (NID), which includes meningitis
+and encephalitis. People ages 65 and older are at higher risk for NID. Due to the severe nature of these cases, they are
+consistently detected and reported.
 
-Arboviral diseases can be divided into two main categories: imported and endemic. Imported arboviral diseases are instances where individuals test positive for
-an infection after travelling to another country. These diseases are not typically transmitted within Louisiana and are not circulating in local mosquito populations.
-The imported arboviral diseases included in this report are chikungunya, dengue, and Zika. Endemic arboviral diseases are infections which occur in Louisiana,
-such as Eastern Equine Encephalitis, St. Louis Encephalitis, and West Nile Virus. West Nile (WN) is the most common arboviral disease in the state and has
-been actively transmitted since it was first detected in 2002.
+Since such a small percentage of human infections are detected, it is also important to monitor mosquito populations.
+Every year 20,000-50,000 mosquito pools (aggregate samples of 50+ mosquitoes from the same sample site) from
+approximately 30 parishes are submitted to the Louisiana Animal Disease Diagnostic Laboratory (LSU - LADDL) for
+testing. These mosquitos are tested for endemic viruses in order to detect when and where viruses are transmitted.
 
-Laboratories and health care providers report cases of arboviral diseases to the Office of Public Health under the State Sanitary Code. However, not all cases are
-able to be detected. Between 80-90% of all WN cases are asymptomatic, meaning these individuals would not seek testing. Occasionally these asymptomatic
-cases are detected through blood donation testing (PVD). Many symptomatic cases can be mild to moderate flu-like illnesses (West Nile Fever), and might not
-seek medical care or be tested. Only a small fraction of cases develop neuroinvasive disease (NID), which includes meningitis and encephalitis. People ages 65
-and older are at higher risk for NID. Due to the severe nature of these cases, they are consistently detected and reported.
+Contents:
+  Page 2: Endemic (Local) Mosquito Activity by Parish
+  Page 3: West Nile Virus Trends - Human Cases and Mosquito Pools
+  Page 4: West Nile Virus Activity Map
+  Page 5: Imported Diseases by LDH State Region
 
-Since such a small percentage of human infections are detected, it is also important to monitor mosquito populations. Every year 20,000-50,000 mosquito pools
-(aggregate samples of 50+ mosquitoes from the same sample site) from approximately 30 parishes are submitted for testing. These mosquitos are tested for
-endemic viruses in order to detect when and where viruses are transmitted.
+                                          Louisiana Arbovirus Summary Report
+                                                  2023 - CDC Week 52                                             Page 1 of 5
 
+                                                    Louisiana Arbovirus Summary Report
+                                                            2023 - CDC Week 52
 
+Table 1. Endemic Arbovirus Activity by Parish
 
+                                        West Nile Virus                      Eastern Equine Encephalitis   Saint Louis Encephalitis
+                                           (WNV)                                        (EEE)                       (SLE)
+       Parish
+                                                            Human
+                       Mosquito Avian Equine                               Mosquito Avian Equine Human Mosquito Avian Equine Human
+                                               NID*       F*   PVD* Deaths
+         Total           765      0     4       46         7    12    4       1       0     1      1      0       0     0      0
+Allen                      1
+Ascension                 18                    6
+Bienville                                       1
+Bossier                                 1       1
+Caddo                    35                     1
+Calcasieu                25                     2         1
+Cameron                  1
+East Baton Rouge         36             1       5               2
+Iberia                   17                     1         2     1
+Jefferson                31                     1
+Jefferson Davis           1
+Lafayette                35                     6         1     1
+Lafourche                15                     2               2
+Lincoln                   9
+Livingston                                      3
+Orleans                    2                                                  1
+Ouachita                 306                    1               3
+Plaquemines                1
+Pointe Coupee             44            1       1
+Rapides                                         2
+Richland                                        1
+St. Bernard               1
+St. Charles               3
+St. John the Baptist      1                     1
+St. Martin               26                     1               1
+St. Mary                 36
+St. Tammany              12                     2         1
+Tangipahoa               18                                     1
+Terrebonne               21             1       1         1                                           1
+Washington                                      2
+Webster                                         3
+West Baton Rouge         70                     1         1
+West Carroll                                    1               1
+West Feliciana                                                                                1
 
-                                     Table 1. 2022 Arbovirus Activity, Louisiana, Week 52
-                                                                                                   Human
-     Arbovirus                                 Mosquito     Avian        Equine
-                                                                                   NID           F    Deaths            PVD
-     California Serogroup
-     Chikungunya                                                                                 1
-     Dengue                                                                                      4
-     Eastern Equine Encephalitis                   5                        6
-     St. Louis Encephalitis                        4
-     West Nile                                   1025          11           3       41           8            7           6
-     Zika
-     Total                                       1034          11           9       41          13            7           6
-     NID - neuroinvasive disease   F - fever    PVD - presumptive viremic donor
+*NID - Neuroinvasive Disease, F - Fever, PVD - Presumptive Viremic Donor (not determined to have symptoms)
 
-
-
-                                                                                                                                                                         1
-
-Table 2. Imported Arbovirus Activity by Parish�, Week 52
-                                CHIKV         DENV                ZIKV
-            Parish                                                  H
-                                   H           H
-                                                             F           PVD
-Region 1                           1           4             0            0
-Total                              1           4             0            0
-H - human     M - mosquito
-F - fever   PVD - presumptive viremic donor
-CHIKV - Chikungunya virus    DENV - Dengue virus     ZIKV - Zika virus
-
-
-
-
-                                                                               2
-
-Table 3. Endemic Arbovirus Activity by Parish, Week 52
-                       CAL             EEEV                                                SLEV                                            WNV
-         Parish                                                                                                                                         H
-                        H     M       A     E     H    M                                  A        E        H       M        A         E
-                                                                                                                                              NID       F      PVD
-Allen                                                          1                                                    2
-Ascension                                                      1                                                    44                           1
-Assumption                                                                                                          2
-Bienville                                                                                                                                                1
-Bossier                                                                                                             1                            3
-Caddo                                                                                                               20                           2
-Calcasieu                                                                                                           13
-Cameron                                                                                                             2
-East Baton Rouge                                                                 1                                  45                           2       3        1
-East Feliciana                                                                                                                                   2
-Iberia                                                                           2                                  18
-Jefferson                                                                                                           15                 1         1
-Jefferson Davis                                                                                                     2
-Lafayette                                                                                                           10                           1
-Lafourche                                                      1                                                    6                            1
-Livingston                                                     1                                                                       1         8       2
-Morehouse                                                                                                                                        1
-Natchitoches                                                                                                                                     1
-Orleans                                                                                                            50                                             1
-Ouachita                                                                                                           170                           3
-Pointe Coupee                                                                                                       4
-Rapides                                                                                                                                          2       1
-St. Bernard                                                                                                         7                                             1
-St. Charles                                                                                                        13
-St. James                                      1                                                                    4
-St. John the Baptist                                                                                                9
-St. Martin                                                     1                 1                                 53
-St. Mary                                       1                                                                   10
-St. Tammany                                    2                                                                   136       11                  4                1
-Tangipahoa                                     1                                                                   327                           9       1        1
-Terrebonne                                                                                                          4
-Vermilion                                                                                                                              1
-Webster                                                                                                                                                           1
-West Baton Rouge                                               1                                                    58
-LDH Region 1*                                                                                                                                    1                2
-LDH Region 2*                                                                                                                                    5       3        1
-LDH Region 3*                                                                                                                                    1
-LDH Region 4*                                                                                                                                    1
-LDH Region 5*
-LDH Region 6*                                                                                                                                  2         1
-LDH Region 7*                                                                                                                                  6         1        1
-LDH Region 8*                                                                                                                                  4
-LDH Region 9*                                                                                                                                  21        3        2
-Total                               0          5       0       6        0        4        0        0        0     1025       11        3       41        8        6
-A - avian   E - equine     H - human        M - mosquito
-NID - neuroinvasive disease     F - fever     PVD - presumptive viremic donor
-CAL - California serogroup viruses EEEV - Eastern Equine Encephalitis virus SLEV - St. Louis Encephalitis virus WNV - West Nile virus
-* Human cases are reported by LDH Region. Please see Regional Map on next page for reference. Parish counts are included on the year-end report.
-Note: Not all parishes collect and test mosquito pools for virus activity. The information provided in this report should be used to infer statewide and regional trends and activity of virus
-transmission. If a parish is not included on this report, that does not mean that arbovirus transmission is not ocurring in that area.
-
-
-                                                                                                                                                                                                 3
-
-Figure 2. WNV-Positive Humans Reported in Louisiana, by MMWR Week of Onset 2020-2022, Week 52
+Note: Not all parishes collect and test mosquito pools for virus activity. The information provided in this report should be
+used to infer statewide and regional trends and activity of virus transmission. If a parish is not included on this report, that
+does not mean that arbovirus transmission is not ocurring in that area. Only mosquito pools tested at LADDL are included
+on this report.
 
 
 
 
-                                                                                                5
+                                                                                                                             Page 2 of 5
 
-Figure 1. LDH Regional Map
+                                          Louisiana Arbovirus Summary Report
+                                                  2023 - CDC Week 52
 
-
-
-
-                             4
-
-Figure 3. WNV-Positive Mosquito Pools Reported in Louisiana, by MMWR Week of Collection, 2020-2022, Week 52
+Figure 1. WNV-Positive Humans Reported in Louisiana, by MMWR Week of Onset 2021-2023
 
 
 
 
-*Mosquito pools are reported by date of collection, testing data for the most recent week may not be complete at the time of report.
+Figure 2. WNV-Positive Mosquito Pools Reported in Louisiana, by MMWR Week of Collection, 2021-2023*
 
 
 
 
-                                                                                                                                       6
-
-Figure 4. Louisiana Parishes Reporting West Nile Virus Activity, Week 52
-
+*Due to the time required for mosquito pool collection, transport, and testing; the mosquito data for the
+most recent week may not be complete at the time of reporting.
 
 
+                                                                                                      Page 3 of 5
 
-                                                                           7
+                                   Louisiana Arbovirus Summary Report
+                                           2023 - CDC Week 52
 
-Figure 5. Louisiana Parishes Reporting St. Louis Encephalitis Activity, Week 52
-
-
-
-
-                                                                                  8
-
-Figure 6. Louisiana Parishes Reporting Eastern Equine Encephalitis Activity, Week 52
+Figure 3. Louisiana Parishes Reporting West Nile Virus Activity
 
 
 
 
-                                                                                       9
+                                                                        Page 4 of 5
+
+                                         Louisiana Arbovirus Summary Report
+                                                 2023 - CDC Week 52
+
+Table 2. Imported Arbovirus Activity by LDH Region
+
+  Parish     Chikungunya        Dengue               Zika
+Region 1                          7
+Region 2
+Region 3
+Region 4
+Region 5                           1
+Region 6
+Region 7
+Region 8           1
+Region 9                           1
+Total              1               9                  0
+
+Figure 4. LDH Regional Map
+
+
+
+
+                                                                              Page 5 of 5
 

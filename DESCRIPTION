@@ -1,6 +1,6 @@
 Package: wnvstormdata
 Title: Dataset of Louisiana West Nile Infection Data Linked with Hurricane Exposure
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     c(person("Jordan", "Robinson", , "jordan227r@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
@@ -14,7 +14,7 @@ Description: The dataset provided by 'wnvstormdata' consists of weekly West Nile
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)
 LazyData: true
