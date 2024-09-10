@@ -175,7 +175,7 @@ plotdata <- wnv_2002_2023_stormexposure %>%
 year <-list(year = as.numeric(unique(plotdata$year))) 
 
 #Louisiana Population
-load("data-raw//pop_data_2015_2023.rda")
+load("~//wnvstormdata//data-raw//pop_data_2015_2023.rda")
 
 pop_data_2015_2023 <- pop_data_2015_2023 %>% 
   mutate(year = as.numeric(year)) %>% 

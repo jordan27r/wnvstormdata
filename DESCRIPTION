@@ -1,6 +1,6 @@
 Package: wnvstormdata
 Title: Dataset of Louisiana West Nile Infection Data Linked with Hurricane Exposure
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     c(person("Jordan", "Robinson", , "jordan227r@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
